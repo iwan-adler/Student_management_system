@@ -1,0 +1,2 @@
+# No third-party dependency is required for Phase 1.
+# matplotlib and reportlab will be added only if their dashboard/report features are implemented.
