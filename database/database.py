@@ -1,6 +1,7 @@
 """Database connection and first-run initialization functions."""
 
 import sqlite3
+from contextlib import closing
 from pathlib import Path
 
 from config.config import (
@@ -24,7 +25,9 @@ def get_connection(database_path: Path = DATABASE_PATH) -> sqlite3.Connection:
 def initialize_database(database_path: Path = DATABASE_PATH) -> None:
     """Create tables and first-run defaults without overwriting existing data."""
     database_path.parent.mkdir(parents=True, exist_ok=True)
-    with get_connection(database_path) as connection:
+    # "with connection" commits but does not close; closing() releases the file
+    # immediately (Windows cannot delete or move a file that is still open).
+    with closing(get_connection(database_path)) as connection, connection:
         connection.executescript(SCHEMA_SQL)
         connection.execute(
             "INSERT OR IGNORE INTO settings (key, value) VALUES (?, ?)",

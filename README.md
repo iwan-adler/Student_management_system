@@ -179,8 +179,6 @@ The 5 tests cover:
 - schema creation with a hashed default admin
 - foreign keys being enforced
 
-**Known issue on Windows:** the two database tests report errors *after* their checks have run, while the temporary folder is being deleted. `with get_connection() as conn:` commits but doesn't close the SQLite connection, and Windows won't delete a file that is still open. The other 3 tests pass.
-
 ## Limitations
 
 - **Single administrator** with no separate roles for teachers or students.
@@ -192,9 +190,8 @@ The 5 tests cover:
 
 ## Future enhancements
 
-1. Fix the Windows test cleanup by closing connections explicitly.
-2. Use the credit-weighted GPA on the dashboard.
-3. Separate roles and logins for administrators, teachers and students.
-4. PDF reports and Matplotlib charts.
-5. One-click database backup and restore.
-6. A web or mobile front end. The `services/` layer could be reused behind an API without changing the schema.
+1. Use the credit-weighted GPA on the dashboard.
+2. Separate roles and logins for administrators, teachers and students.
+3. PDF reports and Matplotlib charts.
+4. One-click database backup and restore.
+5. A web or mobile front end. The `services/` layer could be reused behind an API without changing the schema.

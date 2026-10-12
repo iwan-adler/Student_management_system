@@ -2,6 +2,7 @@
 
 import tempfile
 import unittest
+from contextlib import closing
 from pathlib import Path
 
 from database.database import get_connection, initialize_database
@@ -13,7 +14,8 @@ class DatabaseInitializationTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary_directory:
             path = Path(temporary_directory) / "test.db"
             initialize_database(path)
-            with get_connection(path) as connection:
+            # closing(): "with connection" only commits; Windows cannot delete an open file.
+            with closing(get_connection(path)) as connection:
                 tables = connection.execute(
                     "SELECT name FROM sqlite_master WHERE type = 'table'"
                 ).fetchall()
@@ -29,7 +31,8 @@ class DatabaseInitializationTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary_directory:
             path = Path(temporary_directory) / "test.db"
             initialize_database(path)
-            with get_connection(path) as connection:
+            # closing(): "with connection" only commits; Windows cannot delete an open file.
+            with closing(get_connection(path)) as connection:
                 with self.assertRaises(Exception):
                     connection.execute(
                         "INSERT INTO fees (student_id, academic_year, total_fee, paid_amount, pending_amount, payment_status) VALUES (?, ?, ?, ?, ?, ?)",
