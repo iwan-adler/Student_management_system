@@ -8,6 +8,23 @@ Small departments, coaching centres and student clubs often keep academic record
 
 **Who it's for:** a single administrator, such as a class coordinator or office staff member, managing records on one computer.
 
+## Screenshots
+
+Captured from the running app with the built-in sample data (**Settings → Initialize sample data**).
+
+![Dashboard with totals, average GPA, attendance, pending fees and grade distribution](assets/images/dashboard.png)
+
+<table>
+  <tr>
+    <td><img src="assets/images/students.png" alt="Students table with search and filters"></td>
+    <td><img src="assets/images/academics.png" alt="Marks table with internal, external and total marks and calculated grades"></td>
+  </tr>
+  <tr>
+    <td align="center">Students: search, filters, sortable table</td>
+    <td align="center">Academics: grades calculated from internal + external marks</td>
+  </tr>
+</table>
+
 ## Features
 
 **Login and security**
