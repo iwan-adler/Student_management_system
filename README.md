@@ -1,5 +1,7 @@
 # Student Management System
 
+[![tests](https://github.com/iwan-adler/Student_management_system/actions/workflows/tests.yml/badge.svg)](https://github.com/iwan-adler/Student_management_system/actions/workflows/tests.yml)
+
 A desktop app for managing student records (profiles, subjects, marks, grades, attendance and fees) built with **Python, Tkinter and SQLite**. It uses only the Python standard library: no `pip install`, no server, no internet connection.
 
 ## Why
